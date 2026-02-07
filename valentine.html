@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff1744;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .name {
+            color: #ff1744;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .gif-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gif-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .question {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background: #ff1744;
+            color: white;
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        #yesBtn:hover {
+            background: #d50000;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        #noBtn {
+            background: #f5f5f5;
+            color: #666;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        #noBtn:hover {
+            background: #e0e0e0;
+        }
+
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            animation: fall linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: 110%;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        .success {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .success h2 {
+            color: #ff1744;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .success p {
+            font-size: 1.3em;
+            color: #333;
+        }
+
+        .emoji {
+            font-size: 4em;
+            margin: 20px 0;
+        }
+
+        .instruction {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+            font-size: 0.9em;
+            color: #555;
+            text-align: left;
+        }
+
+        .instruction strong {
+            color: #ff1744;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+
+    <div class="container">
+        <div id="question-section">
+            <h1>💝 Valentine's Day 💝</h1>
+            <div class="name">Suhani</div>
+
+            <!-- GIF Section - Replace the URL below with your chosen GIF -->
+            <div class="gif-container">
+                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDdoYWdvZ3NkYmhhdWM2MzI1MnliN3N0Z3A2aWp4eW81enp1emtzeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zBTyMlZD5dayGKT3QG/giphy.gif" alt="Romantic GIF" id="mainGif">
+            </div>
+
+            
+
+            <div class="emoji">🥰</div>
+            <p class="question">Will you be my Valentine?</p>
+            <div class="buttons">
+                <button id="yesBtn">Yes! 💕</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div class="success" id="success-section">
+            <div class="emoji">🎉</div>
+            <h2>Yay! 💖</h2>
+
+            <!-- Success GIF - Replace with another romantic GIF -->
+            <div class="gif-container">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHFzNmcydXFmbnpsbGUyMTB4c3NvYjJtczhmZHVhYjIzZmRkYTN1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/k1BHAGX0gllTYPjt5c/giphy.gif" alt="Celebration GIF">
+            </div>
+
+            <p>I'm so happy, Suhani! You made my day! 🥳</p>
+            <div class="emoji">😍</div>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const questionSection = document.getElementById('question-section');
+        const successSection = document.getElementById('success-section');
+        const heartsContainer = document.getElementById('hearts');
+
+        let yesButtonScale = 1;
+        let noClickCount = 0;
+
+        const noButtonTexts = [
+            "No",
+            "Are you sure?",
+            "Really?",
+            "Think again!",
+            "Last chance!",
+            "You might regret this!",
+            "Don't be silly!",
+            "I know you'll say yes!",
+            "The YES button looks nice!",
+            "Please? 🥺",
+            "Pretty please?",
+            "I'll be sad 😢",
+            "You're breaking my heart!",
+            "Just click YES already!",
+            "NO is not an option! 😤"
+        ];
+
+        // Create falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Yes button click
+        yesBtn.addEventListener('click', () => {
+            questionSection.style.display = 'none';
+            successSection.style.display = 'block';
+
+            // Create explosion of hearts
+            for (let i = 0; i < 50; i++) {
+                createHeart();
+            }
+        });
+
+        // No button hover - it runs away!
+        noBtn.addEventListener('mouseenter', () => {
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+
+            const maxX = containerRect.width - noBtn.offsetWidth - 100;
+            const maxY = containerRect.height - noBtn.offsetHeight - 100;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+
+            // Make Yes button bigger
+            yesButtonScale += 0.15;
+            yesBtn.style.transform = `scale(${yesButtonScale})`;
+
+            // Change No button text
+            noClickCount++;
+            if (noClickCount < noButtonTexts.length) {
+                noBtn.textContent = noButtonTexts[noClickCount];
+            } else {
+                noBtn.textContent = noButtonTexts[noButtonTexts.length - 1];
+            }
+        });
+
+        // No button click (just in case they manage to click it)
+        noBtn.addEventListener('click', () => {
+            noClickCount++;
+            if (noClickCount < noButtonTexts.length) {
+                noBtn.textContent = noButtonTexts[noClickCount];
+            }
+            yesButtonScale += 0.2;
+            yesBtn.style.transform = `scale(${yesButtonScale})`;
+            alert('Nice try! But you know you want to click YES! 😉');
+        });
+    </script>
+</body>
+</html>
